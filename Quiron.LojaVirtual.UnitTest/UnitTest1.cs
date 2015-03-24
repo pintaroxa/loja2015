@@ -4,6 +4,8 @@ using Microsoft.VisualStudio.TestTools.UnitTesting;
 using System.Collections.Generic;
 using System.Web;
 using System;
+using Quiron.LojaVirtual.Web.Models;
+using Quiron.LojaVirtual.Web.HtmlHelpers;
 
 namespace Quiron.LojaVirtual.UnitTest
 {
@@ -50,24 +52,31 @@ namespace Quiron.LojaVirtual.UnitTest
         // classe geradora de html
 
         [TestMethod]
-        public void TestePaginacaoHtml()
+        public void TestarSeAPaginacaoEstaSendoGeradaCorretamente()
         {
+            //Arrange
 
             HtmlHelper html = null;
-
-
-
             Paginacao paginacao = new Paginacao
             {
                 PaginaAtual = 2,
-                ItensPorPaginas = 10,
-                ItensTotal = 2
-
+                ItensPorPagina = 10,
+                ItensTotal = 28
             };
-
             Func<int, string> paginaUrl = i => "Pagina" + i;
+            //Act
 
 
+            MvcHtmlString resultado = html.PageLinks(paginacao, paginaUrl);
+                                  
+            //Assert
+            Assert.AreEqual(
+
+                @"<a class=""btn btn-default"" href=""Pagina1"">1</a>"
+                + @"<a class=""btn btn-default btn-primary selected"" href=""Pagina2"">2</a>"
+                + @"<a class=""btn btn-default"" href=""Pagina3"">3</a>", resultado.ToString()
+
+        );
 
         }
 
