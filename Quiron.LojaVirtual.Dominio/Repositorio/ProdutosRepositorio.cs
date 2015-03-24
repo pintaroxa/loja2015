@@ -14,10 +14,18 @@ namespace Quiron.LojaVirtual.Dominio.Repositorio
 
         //propriedade enumerada que retorna produtos
         //Expõe um enumerador, que oferece suporte a uma iteração simples sobre uma coleção não genérico.
-        public IEnumerable<Produto> tblProdutos
+        public IEnumerable<Produto> tblProduto
         {
             // retornando o context do produto.
-            get { return _context.tblProdutos; }
+            get { return _context.tblProduto; }
         }
+
+
+      
+       
+        
+
+
+
     }
 }

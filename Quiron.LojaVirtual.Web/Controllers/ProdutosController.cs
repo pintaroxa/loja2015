@@ -13,17 +13,14 @@ namespace Quiron.LojaVirtual.Web.Controllers
 
 
         // representa a instancia da tabela de produtos do repositorio.
-        private ProdutosRepositorio _repositorio; 
+             private ProdutosRepositorio _repositorio = new ProdutosRepositorio();
 
         // GET: Produtos
         public ActionResult Index()
         {
-
-
-            _repositorio = new ProdutosRepositorio();
-            
+                  
             // variavel que traz 10 iteis da tabela produto.
-            var produtos = _repositorio.tblProdutos.Take(10);
+            var produtos = _repositorio.tblProduto.Take(10);
                        
 
             return View(produtos);
